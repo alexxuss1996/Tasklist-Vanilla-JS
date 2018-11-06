@@ -22,7 +22,6 @@ function loadEventListeners() {
 	filter.addEventListener('keyup', filterTask)
 }
 
-
 // Get tasks from LS
 function getTasks() {
 	let tasks;
@@ -64,6 +63,7 @@ function getTasks() {
 function addTask(e) {
 	if (taskInput.value === '') {
 		alert('Add a task');
+		return false;
 	}
 
 	// Create li element
@@ -104,7 +104,7 @@ function addTask(e) {
 function storeTaskInLocalStorage(task) {
 	let tasks;
 	if (localStorage.getItem('tasks') === null) {
-		tasks = [];
+		tasks = [] || null;
 	} else {
 		tasks = JSON.parse(localStorage.getItem('tasks'))
 	}
@@ -130,6 +130,7 @@ function removeTaskFromLocalStorage(taskItem) {
 	let tasks;
 	if (localStorage.getItem('tasks') === null) {
 		tasks = [];
+		
 	} else {
 		tasks = JSON.parse(localStorage.getItem('tasks'))
 	}
@@ -152,7 +153,6 @@ function clearTasks() {
 	}
 
 	clearTasksFromLocalStorage()
-
 }
 
 function clearTasksFromLocalStorage() {
