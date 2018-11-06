@@ -46,6 +46,8 @@ function getTasks() {
 	
 	// Add a class
 	link.className = 'delete-item secondary-content'; 
+	// Add cursor pointer
+	link.style.cursor = 'pointer'; 
 
 	// Add icon html 
 	link.innerHTML = '<i class="fa fa-remove"></i>';
@@ -80,6 +82,9 @@ function addTask(e) {
 	
 	// Add a class
 	link.className = 'delete-item secondary-content'; 
+
+	// Add cursor pointer
+	link.style.cursor = 'pointer'; 
 
 	// Add icon html 
 	link.innerHTML = '<i class="fa fa-remove"></i>';
