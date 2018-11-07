@@ -25,6 +25,27 @@ function loadEventListeners() {
 	filter.addEventListener('keyup', filterTask)
 }
 
+function generateTaskLi(taskValue) {
+	// Create li element
+	const li = document.createElement('li');
+	// Add a class
+	li.className = 'collection-item';
+	// Create a TextNode
+	li.appendChild(document.createTextNode(taskValue));
+	// Create a new link element
+	const link = document.createElement('a');
+	// Add a class
+	link.className = 'delete-item secondary-content'; 
+	// Add cursor pointer
+	link.style.cursor = 'pointer'; 
+	// Add icon html 
+	link.innerHTML = '<i class="fa fa-remove"></i>';
+	// Add link to li
+	li.appendChild(link);
+	// Add li to ul
+	taskList.appendChild(li);
+}
+
 // Get tasks from LS
 function getTasks() {
 	tasks.forEach(function(task) {
@@ -46,27 +67,6 @@ function addTask(e) {
 	taskInput.value = '';
 
 	e.preventDefault();
-}
-
-function generateTaskLi(taskValue) {
-	// Create li element
-	const li = document.createElement('li');
-	// Add a class
-	li.className = 'collection-item';
-	// Create a TextNode
-	li.appendChild(document.createTextNode(taskValue));
-	// Create a new link element
-	const link = document.createElement('a');
-	// Add a class
-	link.className = 'delete-item secondary-content'; 
-	// Add cursor pointer
-	link.style.cursor = 'pointer'; 
-	// Add icon html 
-	link.innerHTML = '<i class="fa fa-remove"></i>';
-	// Add link to li
-	li.appendChild(link);
-	// Add li to ul
-	taskList.appendChild(li);
 }
 
 // Store task in LS 
@@ -107,11 +107,6 @@ function clearTasks() {
 
 	localStorage.clear();
 }
-
-// function clearTasksFromLocalStorage() {
-// 	localStorage.clear();
-// }
-
 // Filter tasks
 function filterTask(e) {
 	const text = e.target.value.toLowerCase();
